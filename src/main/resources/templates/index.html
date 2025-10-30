@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="App">
+    <header class="App-header">
+        <h1>AI Chat</h1>
+    </header>
+    <main class="chat-container">
+        <div class="chat-history" id="chat-history">
+            <div th:each="entry : ${chatHistory}" class="chat-entry">
+                <p class="question"><strong>You:</strong> <span th:text="${entry.question}"></span></p>
+                <p class="answer"><strong>AI:</strong> <span th:text="${entry.answer}"></span></p>
+                <span class="timestamp" th:text="${#temporals.format(entry.timestamp, 'HH:mm:ss')}"></span>
+            </div>
+            </div>
+
+        <form class="chat-form" id="chat-form">
+            <input
+                type="text"
+                id="question-input"
+                placeholder="Type your question..."
+                autocomplete="off"
+            />
+            <button type="submit">Send</button>
+        </form>
+    </main>
+</div>
+
+<script src="/chat.js"></script>
+
+</body>
+</html>
