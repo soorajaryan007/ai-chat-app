@@ -1,10 +1,15 @@
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/AibackendApplication.java
+/home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/config/SecurityConfig.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/config/WebClientConfig.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/controller/ChatController.java
+/home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/controller/LoginController.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/controller/PageController.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/dto/ChatRequest.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/dto/MistralDTOs.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/model/ChatEntry.java
+/home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/model/User.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/repository/ChatRepository.java
+/home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/repository/UserRepository.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/service/AIService.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/service/ChatService.java
+/home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/service/CustomOidcUserService.java

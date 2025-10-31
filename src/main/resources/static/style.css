@@ -10,6 +10,7 @@ body {
   padding: 20px;
   color: white;
   text-align: center;
+  position: relative;
 }
 
 .chat-container {
@@ -92,4 +93,174 @@ body {
 
 .chat-form button:disabled {
   background-color: #aaa;
+}
+/* --- LOBBY STYLES --- */
+.lobby-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.new-chat-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+    margin-bottom: 30px;
+}
+
+.new-chat-btn:hover {
+    background-color: #0056b3;
+}
+
+.convo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.convo-item a {
+    display: block;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: #333;
+    transition: box-shadow 0.2s;
+}
+
+.convo-item a:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.convo-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 0 0 8px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.convo-timestamp {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* --- LOGIN PAGE STYLES --- */
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f7f6;
+}
+
+.login-box {
+    background: white;
+    padding: 40px 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.login-box h1 {
+    margin-top: 0;
+}
+
+.google-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: #4285F4;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+    border: 1px solid transparent;
+}
+
+.google-login-btn:hover {
+    background-color: #357ae8;
+}
+
+.google-login-btn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+/* --- HEADER & LAYOUT STYLES --- */
+.back-link {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.user-profile {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center; 
+    color: white;
+}
+
+/* This adds 15px of space between the name, picture, and button */
+.user-profile > * {
+    margin-left: 15px;
+}
+
+.user-profile > *:first-child {
+    margin-left: 0; /* The first item (the name) doesn't need space */
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    
+    /* --- Fixes for alt text --- */
+    display: inline-block; /* Respects width/height */
+    text-align: center;
+    line-height: 40px; /* Vertically centers the text */
+    font-size: 12px;     /* Makes "Profile" text smaller */
+    color: #ccc;
+    overflow: hidden;    /* Hides any text that overflows */
+}
+
+.logout-btn {
+    background: #e6e6e6;
+    color: #333;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background: #d4d4d4;
 }

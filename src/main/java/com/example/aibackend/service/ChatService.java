@@ -16,16 +16,15 @@ public class ChatService {
         this.chatRepository = chatRepository;
     }
 
-    public Mono<ChatEntry> getAiResponseAndSave(String question) {
+    // Updated to accept userId and conversationId
+    public Mono<ChatEntry> getAiResponseAndSave(String userId, String conversationId, String question) {
         // 1. Get the response from the AI service
         return aiService.getMistralResponse(question)
                 .flatMap(answer -> {
                     // 2. Once the answer is received, create the ChatEntry
-                    ChatEntry entry = new ChatEntry(question, answer);
+                    ChatEntry entry = new ChatEntry(userId, conversationId, question, answer);
                     
                     // 3. Save it to MongoDB
-                    // .save() is a synchronous operation, but we wrap it in Mono.just()
-                    // to keep the reactive chain.
                     ChatEntry savedEntry = chatRepository.save(entry);
                     
                     // 4. Return the saved entry

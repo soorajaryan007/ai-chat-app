@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="App">
+    <header class="App-header">
+        <h1>Chat App</h1>
+        
+        <div class="user-profile" th:if="${isLoggedIn}">
+            <span th:text="${userName}"></span>
+            <img th:src="${pictureUrl}" alt="Profile" class="profile-pic">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </div>
+    </header>
+    
+    <main class="lobby-container">
+        <a href="/chat/new" class="new-chat-btn">
+            &#43; Start a New Chat
+        </a>
+        
+        <h2>Recent Chats</h2>
+        <div class="convo-list">
+            <div th:if="${conversations.isEmpty()}">
+                <p>You have no saved chats. Start a new one!</p>
+            </div>
+            
+            <div th:each="convo : ${conversations}" class="convo-item">
+                <a th:href="@{/chat/{id}(id=${convo.conversationId})}">
+                    <p class="convo-title" th:text="${convo.question}"></p>
+                    <span class="convo-timestamp" 
+                          th:text="${#temporals.format(convo.timestamp, 'dd MMM yyyy')}">
+                    </span>
+                </a>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

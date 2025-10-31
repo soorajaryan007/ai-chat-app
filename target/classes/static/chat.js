@@ -1,6 +1,14 @@
 // Wait for the page to load
 document.addEventListener('DOMContentLoaded', () => {
     
+    // --- NEW ---
+    // Get the conversation ID from the <body> tag's data attribute
+    const conversationId = document.body.dataset.conversationId;
+    if (!conversationId) {
+        console.error("Conversation ID is missing!");
+        return;
+    }
+    
     // Get all the elements we need
     const chatForm = document.getElementById('chat-form');
     const questionInput = document.getElementById('question-input');
@@ -81,7 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // 3. Send the question to the backend API
-            const response = await fetch('/api/chat', {
+            // --- UPDATED FETCH URL ---
+            const response = await fetch('/api/chat/' + conversationId, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -90,6 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
+                // If auth fails, Spring Security redirects to login page
+                if (response.status === 401 || response.status === 403) {
+                     window.location.href = "/login";
+                }
                 throw new Error('Network response was not ok');
             }
 
