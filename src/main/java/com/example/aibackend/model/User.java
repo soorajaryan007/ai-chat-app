@@ -13,6 +13,7 @@ public class User {
     private String id;
 
     private String googleId; // The unique ID from Google
+    private String githubId;
 
     @Indexed(unique = true) // No two users can have the same email
     private String email;

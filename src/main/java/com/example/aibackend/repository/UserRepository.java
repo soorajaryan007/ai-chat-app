@@ -14,4 +14,5 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     // Find a user by their unique Google ID
     Optional<User> findByGoogleId(String googleId);
+    Optional<User> findByGithubId(String githubId);
 }

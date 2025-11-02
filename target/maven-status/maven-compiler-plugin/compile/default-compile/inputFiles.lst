@@ -12,4 +12,5 @@
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/repository/UserRepository.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/service/AIService.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/service/ChatService.java
+/home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/service/CustomOAuth2UserService.java
 /home/sooraj/ai-chat-app/src/main/java/com/example/aibackend/service/CustomOidcUserService.java
