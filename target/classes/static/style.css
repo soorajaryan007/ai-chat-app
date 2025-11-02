@@ -249,7 +249,7 @@ body {
     font-size: 12px;     /* Makes "Profile" text smaller */
     color: #ccc;
     overflow: hidden;    /* Hides any text that overflows */
-}
+} 
 
 .logout-btn {
     background: #e6e6e6;
@@ -263,4 +263,31 @@ body {
 
 .logout-btn:hover {
     background: #d4d4d4;
+}
+
+/* --- GITHUB BUTTON --- */
+.github-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+    border: 1px solid #333;
+    margin-top: 10px; /* Add space between buttons */
+}
+
+.github-login-btn:hover {
+    background-color: #555;
+}
+
+.github-login-btn img {
+    width: 24px; /* GitHub logo is a bit different */
+    height: 24px;
+    margin-right: 10px;
 }

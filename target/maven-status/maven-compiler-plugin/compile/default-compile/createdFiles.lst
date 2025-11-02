@@ -8,6 +8,7 @@ com/example/aibackend/dto/MistralDTOs$Choice.class
 com/example/aibackend/AibackendApplication.class
 com/example/aibackend/service/AIService.class
 com/example/aibackend/repository/UserRepository.class
+com/example/aibackend/service/CustomOAuth2UserService.class
 com/example/aibackend/config/WebClientConfig.class
 com/example/aibackend/dto/ChatRequest.class
 com/example/aibackend/controller/ChatController.class
