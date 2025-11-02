@@ -17,7 +17,7 @@ public class SecurityConfig {
     private final CustomOidcUserService customOidcUserService;
     private final CustomOAuth2UserService customOAuth2UserService; // Add this
 
-    // Update the constructor to accept both services
+    // This constructor now accepts BOTH user services
     public SecurityConfig(CustomOidcUserService customOidcUserService, CustomOAuth2UserService customOAuth2UserService) {
         this.customOidcUserService = customOidcUserService;
         this.customOAuth2UserService = customOAuth2UserService;
@@ -57,7 +57,7 @@ public class SecurityConfig {
                 .loginPage("/login")
                 .defaultSuccessUrl("/", true) // On success, go to the lobby
                 .userInfoEndpoint(userInfo -> userInfo
-                    // --- This is the corrected block ---
+                    // --- THIS IS THE CORRECTED BLOCK ---
                     .oidcUserService(this.customOidcUserService)   // For Google (OIDC)
                     .userService(this.customOAuth2UserService)     // For GitHub (OAuth2)
                 )

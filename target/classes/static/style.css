@@ -5,12 +5,17 @@ body {
   margin: 0;
 }
 
+/* --- Find this class and replace it --- */
 .App-header {
   background-color: #282c34;
-  padding: 20px;
+  padding: 15px 20px; /* Use a little less padding on top/bottom */
   color: white;
   text-align: center;
-  position: relative;
+  
+  /* --- NEW FLEXBOX RULES --- */
+  display: flex;
+  justify-content: space-between; /* Puts space between items */
+  align-items: center; /* Vertically centers them */
 }
 
 .chat-container {
@@ -203,28 +208,24 @@ body {
 }
 
 /* --- HEADER & LAYOUT STYLES --- */
+/* --- Find this class and replace it --- */
 .back-link {
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
     color: white;
     text-decoration: none;
     font-size: 1rem;
+    /* Remove all the old 'position', 'top', 'left', 'transform' rules */
 }
 
 .back-link:hover {
     text-decoration: underline;
 }
 
+/* --- Find this class and replace it --- */
 .user-profile {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
     display: flex;
-    align-items: center; 
+    align-items: center;
     color: white;
+    /* Remove all the old 'position', 'top', 'right', 'transform' rules */
 }
 
 /* This adds 15px of space between the name, picture, and button */
@@ -290,4 +291,11 @@ body {
     width: 24px; /* GitHub logo is a bit different */
     height: 24px;
     margin-right: 10px;
+}
+.header-title {
+  /* This ensures the title doesn't overlap the side elements */
+  flex-grow: 1;
+  margin: 0;
+  padding: 0 10px; /* Add some space so it's not touching */
+  font-size: 1.5rem; /* Make it a bit smaller on mobile */
 }
