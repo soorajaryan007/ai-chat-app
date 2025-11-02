@@ -1,6 +1,7 @@
 package com.example.aibackend.config;
 
 import com.example.aibackend.service.CustomOidcUserService;
+import com.example.aibackend.service.CustomOAuth2UserService; // Import this
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,14 +15,17 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
     private final CustomOidcUserService customOidcUserService;
+    private final CustomOAuth2UserService customOAuth2UserService; // Add this
 
-    public SecurityConfig(CustomOidcUserService customOidcUserService) {
+    // Update the constructor to accept both services
+    public SecurityConfig(CustomOidcUserService customOidcUserService, CustomOAuth2UserService customOAuth2UserService) {
         this.customOidcUserService = customOidcUserService;
+        this.customOAuth2UserService = customOAuth2UserService;
     }
 
     /**
-     * This bean tells Spring Security to COMPLETELY IGNORE
-     * requests for static files. This is the fix for your styling.
+     * This bean tells Spring Security to completely IGNORE requests for static
+     * files. This is the fix for your styling.
      */
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
@@ -29,22 +33,20 @@ public class SecurityConfig {
             .requestMatchers(
                 new AntPathRequestMatcher("/*.css"), // Matches style.css
                 new AntPathRequestMatcher("/*.js"),  // Matches chat.js
-                new AntPathRequestMatcher("/*.svg")  // Matches google-logo.svg
+                new AntPathRequestMatcher("/*.svg")  // Matches google-logo.svg & github-logo.svg
             );
     }
     
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            // --- THIS IS THE FIX FOR THE "LOGIN LOOP" ---
-            // We must disable CSRF protection for our API paths
-            // so JavaScript 'fetch' requests can post data.
+            // This disables CSRF protection for your API, which is
+            // needed for your JavaScript 'fetch' to work.
             .csrf(csrf -> 
                 csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/api/**"))
             )
             .authorizeHttpRequests(authorize -> authorize
                 // 1. Allow public access to the login page ONLY.
-                //    The lobby "/" is now protected.
                 .requestMatchers("/login").permitAll()
                 
                 // 2. All other requests (like "/" or "/chat/*")
@@ -54,8 +56,10 @@ public class SecurityConfig {
             .oauth2Login(oauth2 -> oauth2
                 .loginPage("/login")
                 .defaultSuccessUrl("/", true) // On success, go to the lobby
-                .userInfoEndpoint(userInfo ->
-                    userInfo.oidcUserService(this.customOidcUserService)
+                .userInfoEndpoint(userInfo -> userInfo
+                    // --- This is the corrected block ---
+                    .oidcUserService(this.customOidcUserService)   // For Google (OIDC)
+                    .userService(this.customOAuth2UserService)     // For GitHub (OAuth2)
                 )
             )
             .logout(logout -> logout
